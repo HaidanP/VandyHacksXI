@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Product Explorer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-leaf"></i> Sustainable Product Explorer</h1>
+            <p>Discover eco-friendly alternatives to everyday products</p>
+        </div>
+    </header>
+    <main class="container">
+        <section id="search-section" class="card">
+            <h2>Find Sustainable Alternatives</h2>
+            <form id="productSearchForm">
+                <input type="text" id="productSearch" placeholder="Enter a product you use..." required>
+                <button type="submit"><i class="fas fa-search"></i> Search</button>
+            </form>
+    
+            <div id="filterOptions">
+                <select id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="Personal Care">Personal Care</option>
+                    <option value="Kitchen">Kitchen</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Electronics">Electronics</option>
+                </select>
+    
+                <select id="ecoScoreFilter">
+                    <option value="">All Eco-Scores</option>
+                    <option value="9">9 and above</option>
+                    <option value="7">7 and above</option>
+                    <option value="5">5 and above</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="results" class="card hidden"></section>
+
+        <section id="productComparison" class="hidden">
+            <h2>Compare Products</h2>
+            <div id="comparisonContainer">
+                <div class="comparison-product" id="product1"></div>
+                <div class="comparison-product" id="product2"></div>
+            </div>
+            <canvas id="comparisonChart"></canvas>
+        </section>
+
+        <section id="carbonFootprintCalculator" class="card">
+            <h2>Carbon Footprint Calculator</h2>
+            <form id="carbonFootprintForm">
+                <label for="electricityUsage">Monthly Electricity Usage (kWh):</label>
+                <input type="number" id="electricityUsage" required>
+
+                <label for="gasUsage">Monthly Natural Gas Usage (therms):</label>
+                <input type="number" id="gasUsage" required>
+
+                <label for="carMileage">Annual Car Mileage:</label>
+                <input type="number" id="carMileage" required>
+
+                <button type="submit">Calculate Carbon Footprint</button>
+            </form>
+            <div id="carbonFootprintResult"></div>
+        </section>
+
+        <section id="sustainabilityScoreTracker" class="card">
+            <h2>Your Sustainability Journey</h2>
+            <p>Total Actions Taken: <span id="totalActions">0</span></p>
+            <p>Total Carbon Saved: <span id="carbonSaved">0</span> kg CO2</p>
+            <p>Weekly Goals Completed: <span id="completedGoals">0</span></p>
+
+            <div class="progress-bar">
+                <div class="progress" id="progressCarbonSaved" style="width: 0%"></div>
+            </div>
+
+            <form id="sustainabilityActionForm">
+                <label for="actionSelect">Select an action you've taken:</label>
+                <select id="actionSelect">
+                    <option value="Used reusable bag">Used reusable bag</option>
+                    <option value="Took public transport">Took public transport</option>
+                    <option value="Used renewable energy">Used renewable energy</option>
+                    <option value="Reduced plastic usage">Reduced plastic usage</option>
+                </select>
+                <button type="submit">Add Action</button>
+            </form>
+
+            <div id="sustainabilityProgressMessage"></div>
+        </section>
+
+        <section id="ecoQuiz" class="card">
+            <h2>Eco-Friendly Quiz</h2>
+            <div id="quizQuestion"></div>
+            <div id="quizOptions"></div>
+            <div id="quizResult"></div>
+            <button id="nextQuizQuestion" style="display: none;">Next Question</button>
+        </section>
+
+        <section id="leaderboard" class="card">
+            <h2>Sustainability Leaderboard</h2>
+            <ol id="leaderboardList"></ol>
+        </section>
+
+        <section id="communityForum" class="card">
+            <h2>Community Forum</h2>
+            <div id="forumPosts"></div>
+            <form id="newPostForm">
+                <textarea id="newPostContent" placeholder="Share your thoughts or ask a question..." required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="server.js"></script>
+</body>
+</html>
+
+
